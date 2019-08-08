@@ -15,20 +15,20 @@ dev_dependencies:
 
 ### Define your assets
 
-Create a folder to store all the localizations in **json** format. The name of each file should match the locale that is representing. For example:
+In your **pubspec.yaml** file:
 
 ```yaml
 flutter:
 
   assets:
 
-    - assets/icon/ # imports all files in that directory
-    - assets/icon/close.png # import that specific file
+    - assets/icon/            # imports all files in that directory
+    - assets/icon/close.png   # imports that specific file
 ```
 
 ### Generating Dart code
 
-To generate the **Dart** file containing all the assets, run the following command:
+To generate the **Dart** file containing all assets, run the following command:
 
 ```bash
 flutter pub pub run daassets:daassets.dart PUBSPEC_FILE_PATH OUTPUT_FILE_PATH
@@ -37,10 +37,12 @@ flutter pub pub run daassets:daassets.dart PUBSPEC_FILE_PATH OUTPUT_FILE_PATH
 For example:
 
 ```bash
-flutter pub pub run daassets:daassets.dart ./example/pubspec.yaml ./example/assets.dart
+flutter pub pub run daassets:daassets.dart ./pubspec.yaml ./lib/assets.dart
 ```
 
 ### Using generated code
+
+The generated class contains static constants that you can use anywhere in your project.
 
 ```dart
 Image.asset(Assets.ICON_CLOSE);
