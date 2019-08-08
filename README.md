@@ -13,7 +13,7 @@ dev_dependencies:
 
 ## Example
 
-### Define your assets
+#### Define your assets
 
 In your **pubspec.yaml** file:
 
@@ -26,7 +26,7 @@ flutter:
     - assets/icon/close.png   # imports that specific file
 ```
 
-### Generating Dart code
+#### Generating Dart code
 
 To generate the **Dart** file containing all assets, run the following command:
 
@@ -40,7 +40,7 @@ For example:
 flutter pub pub run daassets:daassets.dart ./pubspec.yaml ./lib/assets.dart
 ```
 
-### Using generated code
+#### Using generated code
 
 The generated class contains static constants that you can use anywhere in your project.
 
