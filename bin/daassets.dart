@@ -12,17 +12,19 @@ Future<void> main(List<String> args) async {
   final dynamic yaml = loadYaml(content);
 
   final YamlList assets = yaml['flutter']['assets'];
-  final List<File> files = getFiles(assets);
+  final List<File> files = getFiles(input, assets);
 
   generateClass(files, output);
 }
 
-List<File> getFiles(YamlList assets) {
+List<File> getFiles(File input, YamlList assets) {
   final List<File> list = <File>[];
 
   for (dynamic asset in assets) {
-    final File file = File(asset);
-    final Directory directory = Directory(asset);
+    final String path = '${input.parent.path}${Platform.pathSeparator}$asset';
+
+    final File file = File(path);
+    final Directory directory = Directory(path);
 
     if (file.existsSync() && !fileExist(list, file)) {
       list.add(file);
@@ -53,7 +55,8 @@ void generateClass(List<File> files, File output) {
   source.write('class Assets {\n');
 
   for (File file in files) {
-    source.write("\tstatic const ${assetName(file)} = '${file.path}';\n");
+    source
+        .write("\tstatic const String ${assetName(file)} = '${file.path}';\n");
   }
 
   source.write('}\n');
