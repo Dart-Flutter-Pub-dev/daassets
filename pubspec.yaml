@@ -5,11 +5,11 @@ author: Mauricio Togneri <mauricio.togneri@gmail.com>
 homepage: https://github.com/mauriciotogneri/daassets
 
 environment:
-  sdk: ">=2.4.0 <3.0.0"
+  sdk: ">=2.8.0 <3.0.0"
 
 dependencies:
 
   flutter:
     sdk: flutter
 
-  yaml: ^2.1.16
+  yaml: ^2.2.1

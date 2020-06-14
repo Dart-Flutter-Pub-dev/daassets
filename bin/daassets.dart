@@ -20,7 +20,7 @@ Future<void> main(List<String> args) async {
 List<File> getFiles(File input, YamlList assets) {
   final List<File> list = <File>[];
 
-  for (dynamic asset in assets) {
+  for (final dynamic asset in assets) {
     final String path = '${input.parent.path}${Platform.pathSeparator}$asset';
 
     final File file = File(path);
@@ -32,7 +32,7 @@ List<File> getFiles(File input, YamlList assets) {
       final List<FileSystemEntity> entries =
           directory.listSync(recursive: true);
 
-      for (FileSystemEntity entry in entries) {
+      for (final FileSystemEntity entry in entries) {
         final File newFile = File(entry.path);
 
         if (newFile.existsSync() && !fileExist(list, newFile)) {
@@ -54,7 +54,7 @@ void generateClass(List<File> files, File output) {
 
   source.write('class Assets {\n');
 
-  for (File file in files) {
+  for (final File file in files) {
     source
         .write("\tstatic const String ${assetName(file)} = '${file.path}';\n");
   }
