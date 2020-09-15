@@ -1,4 +1,5 @@
 #!/usr/bin/env dart
+
 library daassets;
 
 import 'dart:io';
@@ -55,8 +56,8 @@ void generateClass(List<File> files, File output) {
   source.write('class Assets {\n');
 
   for (final File file in files) {
-    source
-        .write("\tstatic const String ${assetName(file)} = '${file.path}';\n");
+    final String realPath = file.path.substring(file.path.indexOf('assets/'));
+    source.write("\tstatic const String ${assetName(file)} = './$realPath';\n");
   }
 
   source.write('}\n');
@@ -64,14 +65,21 @@ void generateClass(List<File> files, File output) {
 
 String assetName(File file) {
   String name = '';
+  bool started = false;
   final List<String> segments = file.uri.pathSegments;
 
-  for (int i = 1; i < (segments.length - 1); i++) {
+  for (int i = 0; i < (segments.length - 1); i++) {
     if (name.isNotEmpty) {
       name += '_';
     }
 
-    name += segments[i];
+    if (started) {
+      name += segments[i];
+    }
+
+    if (segments[i].toLowerCase() == 'assets') {
+      started = true;
+    }
   }
 
   final String fileName = segments[segments.length - 1];
