@@ -5,3 +5,7 @@
 ## [1.1.0] - 2020-09-15
 
 * Fixed path problem
+
+## [1.1.1] - 2020-09-15
+
+* Added documentation

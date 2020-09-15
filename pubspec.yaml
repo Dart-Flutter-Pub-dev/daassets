@@ -1,6 +1,6 @@
 name: daassets
 description: A Flutter package to automatically generate a class containing references to all assets in your project.
-version: 1.1.0
+version: 1.1.1
 homepage: https://github.com/mauriciotogneri/daassets
 
 environment:

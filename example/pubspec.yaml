@@ -1,6 +1,6 @@
 name: daassets_example
 description: Example code for the daassets library.
-version: 1.1.0
+version: 1.1.1
 homepage: https://github.com/mauriciotogneri/daassets
 
 environment:

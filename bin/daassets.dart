@@ -5,6 +5,7 @@ library daassets;
 import 'dart:io';
 import 'package:yaml/yaml.dart';
 
+/// Entry point.
 Future<void> main(List<String> args) async {
   final File input = File(args[0]);
   final File output = File(args[1]);
@@ -13,12 +14,12 @@ Future<void> main(List<String> args) async {
   final dynamic yaml = loadYaml(content);
 
   final YamlList assets = yaml['flutter']['assets'];
-  final List<File> files = getFiles(input, assets);
+  final List<File> files = _getFiles(input, assets);
 
-  generateClass(files, output);
+  _generateClass(files, output);
 }
 
-List<File> getFiles(File input, YamlList assets) {
+List<File> _getFiles(File input, YamlList assets) {
   final List<File> list = <File>[];
 
   for (final dynamic asset in assets) {
@@ -27,7 +28,7 @@ List<File> getFiles(File input, YamlList assets) {
     final File file = File(path);
     final Directory directory = Directory(path);
 
-    if (file.existsSync() && !fileExist(list, file)) {
+    if (file.existsSync() && !_fileExist(list, file)) {
       list.add(file);
     } else if (directory.existsSync()) {
       final List<FileSystemEntity> entries =
@@ -36,7 +37,7 @@ List<File> getFiles(File input, YamlList assets) {
       for (final FileSystemEntity entry in entries) {
         final File newFile = File(entry.path);
 
-        if (newFile.existsSync() && !fileExist(list, newFile)) {
+        if (newFile.existsSync() && !_fileExist(list, newFile)) {
           list.add(newFile);
         }
       }
@@ -46,10 +47,10 @@ List<File> getFiles(File input, YamlList assets) {
   return list;
 }
 
-bool fileExist(List<File> list, File file) =>
+bool _fileExist(List<File> list, File file) =>
     list.where((File f) => f.path == file.path).isNotEmpty;
 
-void generateClass(List<File> files, File output) {
+void _generateClass(List<File> files, File output) {
   final SourceFile source = SourceFile(output);
   source.clear();
 
@@ -57,13 +58,14 @@ void generateClass(List<File> files, File output) {
 
   for (final File file in files) {
     final String realPath = file.path.substring(file.path.indexOf('assets/'));
-    source.write("\tstatic const String ${assetName(file)} = './$realPath';\n");
+    source
+        .write("\tstatic const String ${_assetName(file)} = './$realPath';\n");
   }
 
   source.write('}\n');
 }
 
-String assetName(File file) {
+String _assetName(File file) {
   String name = '';
   bool started = false;
   final List<String> segments = file.uri.pathSegments;

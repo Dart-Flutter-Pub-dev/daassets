@@ -8,7 +8,7 @@ Add the following dependencies to your `pubspec.yaml`:
 
 ```yaml
 dev_dependencies:
-  daassets: ^1.1.0
+  daassets: ^1.1.1
 ```
 
 ## Example
