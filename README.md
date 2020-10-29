@@ -1,6 +1,6 @@
 # Daassets
 
-A **Flutter** package to automatically generate a class containing references to all assets in your project.
+A **Dart** package to automatically generate a class containing references to all assets in your project.
 
 ## Installation
 
@@ -8,7 +8,7 @@ Add the following dependencies to your `pubspec.yaml`:
 
 ```yaml
 dev_dependencies:
-  daassets: ^1.1.1
+  daassets: ^1.2.0
 ```
 
 ## Example
