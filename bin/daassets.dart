@@ -28,7 +28,7 @@ List<File> _getFiles(File input, YamlList assets) {
     final File file = File(path);
     final Directory directory = Directory(path);
 
-    if (file.existsSync() && !_fileExist(list, file)) {
+    if (file.existsSync() && !_fileExist(list, file) && !_shouldIgnore(file)) {
       list.add(file);
     } else if (directory.existsSync()) {
       final List<FileSystemEntity> entries =
@@ -37,7 +37,9 @@ List<File> _getFiles(File input, YamlList assets) {
       for (final FileSystemEntity entry in entries) {
         final File newFile = File(entry.path);
 
-        if (newFile.existsSync() && !_fileExist(list, newFile)) {
+        if (newFile.existsSync() &&
+            !_fileExist(list, newFile) &&
+            !_shouldIgnore(newFile)) {
           list.add(newFile);
         }
       }
@@ -49,6 +51,8 @@ List<File> _getFiles(File input, YamlList assets) {
 
 bool _fileExist(List<File> list, File file) =>
     list.where((File f) => f.path == file.path).isNotEmpty;
+
+bool _shouldIgnore(File file) => file.path.endsWith('DS_Store');
 
 void _generateClass(List<File> files, File output) {
   final SourceFile source = SourceFile(output);

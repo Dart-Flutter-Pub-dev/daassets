@@ -17,3 +17,7 @@
 ## [1.3.0] - 2021-03-07
 
 * Added support for null safety
+
+## [1.3.2] - 2022-03-15
+
+* Ignoring .DS_Store file
