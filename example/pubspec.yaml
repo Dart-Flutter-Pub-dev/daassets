@@ -14,9 +14,6 @@ dependencies:
 flutter:
 
   assets:
-
-    # icons
     - assets/icon/
-
-    # images
     - assets/image/
+    - assets/text/

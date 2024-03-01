@@ -21,3 +21,7 @@
 ## [1.3.2] - 2022-03-15
 
 * Ignoring .DS_Store file
+
+## [1.4.0] - 2024-03-01
+
+* Fix asset name logic

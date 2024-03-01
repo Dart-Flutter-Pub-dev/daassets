@@ -60,9 +60,10 @@ void _generateClass(List<File> files, File output) {
   source.write('class Assets {\n');
 
   for (final File file in files) {
-    final String realPath = file.path.substring(file.path.indexOf('assets/'));
-    source
-        .write("\tstatic const String ${_assetName(file)} = './$realPath';\n");
+    final String realPath = file.path
+        .substring(file.path.indexOf('assets/'))
+        .replaceAll('\$', '\\\$');
+    source.write("\tstatic const String ${_assetName(file)} = '$realPath';\n");
   }
 
   source.write('}\n');
@@ -94,7 +95,8 @@ String _assetName(File file) {
     name += '_';
   }
 
-  name += fileNameParts[0];
+  name += fileNameParts.sublist(0, fileNameParts.length - 1).join('.');
+  name = name.replaceAll(RegExp(r'[^a-zA-Z0-9]'), '_');
 
   return name.toUpperCase();
 }
