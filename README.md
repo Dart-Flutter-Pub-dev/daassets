@@ -8,7 +8,7 @@ Add the following dependencies to your `pubspec.yaml`:
 
 ```yaml
 dev_dependencies:
-  daassets: ^1.3.2
+  daassets: ^1.4.0
 ```
 
 ## Example
@@ -31,13 +31,13 @@ flutter:
 To generate the **Dart** file containing all assets, run the following command:
 
 ```bash
-flutter pub pub run daassets:daassets.dart PUBSPEC_FILE_PATH OUTPUT_FILE_PATH
+flutter pub run daassets:daassets.dart PUBSPEC_FILE_PATH OUTPUT_FILE_PATH
 ```
 
 For example:
 
 ```bash
-flutter pub pub run daassets:daassets.dart ./pubspec.yaml ./lib/assets.dart
+flutter pub run daassets:daassets.dart ./pubspec.yaml ./lib/assets.dart
 ```
 
 #### Using generated code

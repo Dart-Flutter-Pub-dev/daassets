@@ -5,7 +5,6 @@ library daassets;
 import 'dart:io';
 import 'package:yaml/yaml.dart';
 
-/// Entry point.
 Future<void> main(List<String> args) async {
   final File input = File(args[0]);
   final File output = File(args[1]);
