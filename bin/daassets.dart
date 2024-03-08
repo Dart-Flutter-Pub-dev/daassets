@@ -14,6 +14,7 @@ Future<void> main(List<String> args) async {
 
   final YamlList assets = yaml['flutter']['assets'];
   final List<File> files = _getFiles(input, assets);
+  files.sort((a, b) => a.path.compareTo(b.path));
 
   _generateClass(files, output);
 }

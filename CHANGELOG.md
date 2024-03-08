@@ -25,3 +25,7 @@
 ## [1.4.0] - 2024-03-01
 
 * Fix asset name logic
+
+## [1.5.0] - 2024-03-08
+
+* Sort assets alphabetically

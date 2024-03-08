@@ -1,10 +1,10 @@
 name: daassets
 description: A Dart package to automatically generate a class containing references to all assets in your project.
-version: 1.4.0
+version: 1.5.0
 homepage: https://github.com/mauriciotogneri/daassets
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: '>=3.3.1 <4.0.0'
 
 dependencies:
   yaml: ^3.1.2
